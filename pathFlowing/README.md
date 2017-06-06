@@ -4,7 +4,7 @@ There is a GPU/glsl shader version and a CPU version. The path finders are imlpe
 the CPU for both examples, this limits the number of entities that can be path'd per frame to
 several thousand. Still, it's far more efficient than traditional approaches such as A*.
 
-Path finders register the same as walls and will attempt to go around each other. 
+Path finders register the same as walls and will attempt to go around each other, this is optional. 
 
 There is only one target(mouse location) included in this example but multiple targets are just as easy to do on the GPU version. Targets can be manually added by setting pixels to white, or grey for reduced priority. 
 
