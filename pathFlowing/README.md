@@ -5,7 +5,7 @@ the CPU for both examples, this limits the number of entities that can be path'd
 several thousand. Still, it's far more efficient than traditional approaches such as A*. There 
 is only one target(mouse location) included in this example but multiple targets are just as easy. 
 
-A 4770k and GTX 1070 runs the CPU demo at ~35fps and the GPU demo at ~90fps. 
+An i7-4770k and GTX 1070 runs the CPU demo at ~35fps and the GPU demo at ~90fps. 
 
  Toggle between CPU/GPU flow field engines with (q) key.
  
