@@ -18,3 +18,4 @@ An i7-4770k and GTX 1070 runs the CPU demo at ~35fps and the GPU demo at ~90fps.
   Toggle 60fps frame rate lock with (a) key.
 
 ![alt text](https://kek.gg/i/7SmDmT.png)
+[![Watch the video](https://kek.gg/i/7SmDmT.png)](https://vimeo.com/220571608)
