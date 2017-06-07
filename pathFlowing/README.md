@@ -3,7 +3,7 @@ A pixel based path finding algorithim with two seperate implementations, using t
 
 There is a GPU/glsl shader version and a CPU version. The path finders are imlpemented on
 the CPU for both examples, this limits the number of entities that can be path'd per frame to
-several thousand. Still, it's far more efficient than traditional approaches such as A*.
+several thousand.
 
 Path finders register the same as walls and will attempt to go around each other, this is optional. 
 
