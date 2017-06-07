@@ -1,21 +1,24 @@
 /*
  * Copyright (C) 2017 Logan McCandless
  * MIT License: https://opensource.org/licenses/MIT
-
+ */
+ 
+ /*
      A GPU and CPU implemenation of my flow field algorithm. 
      
      This GPU implementation solves the problem iteravely, doing only a 
-     little  bit of work with each shader pass. This CPU implementation 
-     solves the entire flow field in one pass. 
+     little  bit of work with each shader pass. 
+     
+     This CPU implementation solves the entire flow field in one pass. 
      
      There are pros and cons to each implemenation, the GPU has a lag 
      in response time, but that can result in less predictable, more 
-     organic pathing. CPU implemnation calculates 10-20 times slower than
+     organic pathing. CPU implemnation calculates 10+ times slower than
      GPU, but it's full frame nature provides better avoidence of fast
      moving obstacles. 
      
-     -the CPU implementation attempts to world-wrap across the X axis for 
-      use in a game, is currently bugged at the corners
+     *the CPU implementation attempts to world-wrap across the X axis for 
+      use in a video game, is currently bugged at the corners
  */
 
 void gpuPathTrace() {
@@ -29,6 +32,9 @@ void gpuPathTrace() {
   }
   image(pgPathMap, 0, 0, width, height);
 }
+
+
+
 
 void cpuPathTrace() {
   final int[] cardinals  = { 1, -1, width, -width }; 

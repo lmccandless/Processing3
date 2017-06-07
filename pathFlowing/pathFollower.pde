@@ -1,7 +1,9 @@
 /*
  * Copyright (C) 2017 Logan McCandless
  * MIT License: https://opensource.org/licenses/MIT
+ */
 
+/*
   CPU based flow field path followers 
      A simple implementation of a path follower using a 
      flow field path map. Works with flow fields rendered 
