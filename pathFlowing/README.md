@@ -1,5 +1,6 @@
 # pathFlowing
-A pixel based path finding algorithim with two seperate implementations. 
+A pixel based path finding algorithim with two seperate implementations, using the flow field path finding technique which allows for simultaneous path finding of very large numbers of entities which would be impossible with traditional alternatives such as A*.
+
 There is a GPU/glsl shader version and a CPU version. The path finders are imlpemented on
 the CPU for both examples, this limits the number of entities that can be path'd per frame to
 several thousand. Still, it's far more efficient than traditional approaches such as A*.
