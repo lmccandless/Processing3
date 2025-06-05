@@ -4,6 +4,7 @@
  */
 
 PShader flow;
+PShader blur;
 PGraphics pathMap, collisionMap;
 ArrayList<Wall> walls = new ArrayList<Wall>();
 PathFollower[] agents;
@@ -14,23 +15,22 @@ final color WALL = color(255,0,0,255);
 boolean useCPU = false;
 boolean lockRate = false;
 float passes = 8;
+float blurPasses = 1;
 float fpsAvg = 0;
 long renderTime = 0;
 
-void settings() {
-  size(800, 600, P2D);
-}
-
 void setup() {
+  size(800, 600, P2D);
   frameRate(1000);
   pathMap = createGraphics(width, height, P2D);
-  pathMap.noSmooth();
+  //pathMap.noSmooth();
   collisionMap = createGraphics(width, height, P2D);
-  collisionMap.noSmooth();
+  //collisionMap.noSmooth();
 
   flow = loadShader("pathFlow.glsl");
   flow.set("resolution", float(width), float(height));
   flow.set("tex_obstacles", collisionMap);
+  blur = loadShader("blur.glsl");
 
   for (int i = 0; i < 50; i++) walls.add(new Wall());
   agents = new PathFollower[2000];
@@ -52,14 +52,19 @@ void draw() {
 
 void gpuTrace() {
   flow.set("mouse", map(mouseX, 0, width, 0, 1), map(mouseY, 0, height, 1, 0));
-  image(collisionMap, 0, 0);
   for (int i = 0; i < int(passes); i++) {
     pathMap.beginDraw();
-    pathMap.image(collisionMap, 0, 0);
     pathMap.filter(flow);
+    pathMap.filter(blur);
+    pathMap.endDraw();
+  }
+  for (int i = 0; i < int(blurPasses); i++) {
+    pathMap.beginDraw();
+    pathMap.filter(blur);
     pathMap.endDraw();
   }
   image(pathMap, 0, 0, width, height);
+  image(collisionMap, 0, 0);
 }
 
 void cpuTrace() {
@@ -90,8 +95,14 @@ void cpuTrace() {
   }
   pathMap.endDraw();
   pathMap.updatePixels();
+  for (int i = 0; i < int(blurPasses); i++) {
+    pathMap.beginDraw();
+    pathMap.filter(blur);
+    pathMap.endDraw();
+  }
   background(0);
   image(pathMap, 0, 0, width, height);
+  image(collisionMap, 0, 0);
 }
 
 color encode(int v) {
