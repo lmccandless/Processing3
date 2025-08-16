@@ -8,7 +8,7 @@
 precision mediump float;
 precision mediump int;
 
-out vec4 glFragColor;
+out vec4 fragColor;
 
 #define PROCESSING_TEXTURE_SHADER
 
@@ -30,7 +30,7 @@ void main( void ) {
   vec2 position = ( gl_FragCoord.xy / resolution.xy );
   if (texture2D(tex_obstacles, position).r <1.0) {
     if (length(position-mouse) < 0.002) {
-      gl_FragColor = white;
+      fragColor = white;
     } 
     else {
       // cardinals 1px away
@@ -59,7 +59,7 @@ void main( void ) {
       if (bk >0.33333) r1 = 0.00390625;
       if (bk >0.66666) r2 = 0.00390625;
       float b5r = float(b1)/3.0;
-      gl_FragColor = vec4(b5r, b5r+r2, b5r+r1, 1.);
+      fragColor = vec4(b5r, b5r+r2, b5r+r1, 1.);
     }
   }
 }
